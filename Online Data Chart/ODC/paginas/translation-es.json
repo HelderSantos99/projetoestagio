@@ -1,0 +1,47 @@
+{
+    "bemvindo": "Bienvenido a Online Data Chart!",
+    "intro": "Una plataforma de uso gratuito donde puede convertir sus archivos de datos en gráficos para un análisis más intuitivo",
+    "intro2": "Comience a analizar sus datos con nosotros ahora!",
+    "btncomecar": "EMPEZAR",
+    "btnhow": "como funciona?",
+
+    "modal1":"Cómo usar nuestra plataforma?",
+    "modal2":"1- Importa un archivo .csv",
+    "modal3":"2- Analiza el contenido y elimina los datos si lo deseas",
+    "modal4":"3- Tu gráfico está listo y se puede exportar a PDF!",
+
+    "passo1": "Paso 1: tu archivo",
+    "p1":"Elija el archivo que desea importar",
+    "p2":"-Formato CSV",
+    "p3":"-La primera línea del archivo debe contener el encabezado con el nombre de cada columna",
+    "p4":" - Debe constar de 2 columnas: la columna 1 con los atributos y la columna 2 con los valores respectivos",
+    "btncontinuar":"SEGUIR",
+
+    "passo2": "Paso 2: tus datos",
+    "analisar":"Revise la siguiente tabla que contiene los datos proporcionados y elimine, si es necesario, las lineas de información que no desea incluir en el gráfico.",
+    "ficheiro":"nombre del archivo:",
+    "remover":"Eliminar",
+    "btncontinuar2":"Confirmar datos y continuar",
+
+    "passo3": "Paso 3: tu gráfico",
+    "voltar": "Vuelve",
+    "escolhergraf":"Elija el tipo de gráfico que desea ver!",
+    "x": "Eje X: ",
+    "y": "Eje Y: ",
+    "nficheiro": "Archivo: ",
+    "barras":"Gráfico de Barras",
+    "pizza":"Gráfico circular",
+    "linha":"Gráfico de líneas",
+    "export":"Exportar PDF",
+
+    "pdf": "Exportar PDF",
+    "forminfo":"Puede exportar su gráfico a un documento PDF con información adicional si quieres!",
+    "titulo": "Titulo del gráfico",
+    "estabelecimento": "Nombre del establecimiento (opcional)",
+    "notas": "Notas adicionales (opcional)",
+    "logotipo":"Logotipo de su establecimiento (opcional)",
+    "file":"Elija una imagen en su computadora:",
+    "estilopdf":"Tipo de PDF",
+    "btnexport":"Exportar PDF"
+
+}

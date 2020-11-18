@@ -1,0 +1,51 @@
+{
+    "bemvindo": "Bem-vindo ao Online Data Chart!",
+    "intro": "Uma plataforma de uso gratuito onde pode converter os seus ficheiros de dados em gráficos para uma análise mais intuitiva.",
+    "intro2": "Comece já a analisar os seus dados connosco!",
+    "btncomecar": "COMEÇAR",
+    "btnhow": "Como funciona?",
+
+    "modal1":"Como utilizar a nossa plataforma?",
+    "modal2":"1- Importar um ficheiro .csv",
+    "modal3":"2- Analisar o conteúdo e remover dados caso seja pretendido",
+    "modal4":"3- O seu gráfico está pronto e pode ser exportado em PDF!",
+
+    "passo1": "Passo 1: O seu ficheiro",
+    "p1":"Escolha o ficheiro que pretende importar",
+    "p2":"-Formato CSV",
+    "p3":"-A primeira linha do ficheiro deve conter o cabeçalho com o nome de cada coluna",
+    "p4":"-Deve ser composto por 2 colunas: coluna 1 com os atributos e coluna 2 com os respetivos valores",
+    "btncontinuar":"CONTINUAR",
+
+    "passo2": "Passo 2: Os seus dados",
+    "analisar":"Analise a seguinte tabela que contém os seus dados e remova, caso necessário, as linhas de informação que não pretende incluir no gráfico.",
+    "ficheiro":"nome do ficheiro:",
+    "remover":"Remover",
+    "btncontinuar2":"Confirmar dados e prosseguir",
+
+    "passo3": "Passo 3: O seu gráfico",
+    "voltar": "Voltar",
+    "escolhergraf":"Escolha o tipo gráfico que pretende visualizar!",
+    "x": "Eixo X: ",
+    "y": "Eixo Y: ",
+    "nficheiro": "Ficheiro: ",
+    "barras":"Gráfico de Barras",
+    "pizza":"Gráfico Pizza",
+    "linha":"Gráfico de linha",
+    "export":"Exportar PDF",
+
+    "pdf": "Exportar para PDF",
+    "forminfo":"Pode fazer a exportação do seu gráfico para um documento PDF acompanhado de informação adicional acerca do mesmo!",
+    "titulo": "Título do gráfico",
+    "estabelecimento": "Nome do estabelecimento(opcional)",
+    "notas": "Notas adicionais(opcional)",
+    "logotipo":"Logotipo do seu estabelecimento (opcional)",
+    "file":"Escolha uma imagem no seu computador:",
+    "estilopdf":"Estilo de PDF",
+    "btnexport":"Exportar PDF"
+
+
+    
+
+
+}

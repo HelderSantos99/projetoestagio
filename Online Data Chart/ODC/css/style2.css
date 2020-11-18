@@ -1,0 +1,442 @@
+body{
+  color: white;
+  background-image: url('../imagens/2.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+html, body{
+  overflow-x: hidden;
+}
+#logobranco2{
+  padding-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+}
+
+.bandeira{
+	width: 35px;
+	border-radius: 10px;
+	transition: 0.3s;
+  }
+
+  .bandeira:hover{
+	opacity: 0.7;
+	cursor: pointer;
+  }
+
+#bandeiras{
+	display: flex;
+  justify-content: center;
+
+}
+
+
+h4{
+  color: #ebb30c;
+  text-align: left;
+  font-size: 3vh;
+}
+
+p{
+  text-align: left;
+  font-size: 2vh;
+}
+
+#passo1{
+    padding-top: 25px;
+    text-align: center;
+    display: block;
+    margin-left: 55px;
+    margin-right: 55px;
+    font-size: 15px;
+}
+
+#file{
+  padding-top: 155px;
+  width: 720px;
+  height: 200px;
+  display: block; 
+}
+
+#file:hover{
+  cursor: pointer;
+}
+
+
+.container{
+  display: center;
+  color: red;
+  font-size: 16px;
+  max-width: 750px;
+  height: 200px;
+  text-align: center;
+  border: 3px dashed rgb(113, 216, 113);
+  border-radius:10px;
+  background-image: url('../imagens/csv.png');
+  background-color: rgba(255, 255, 255, 0.685);
+}
+
+.container:hover{
+  border: 4px solid rgb(153, 255, 0);
+}
+
+
+.btncontinuar {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:10px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	height: 40px;
+  width: 250px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.btncontinuar:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.btncontinuar:active {
+	position:relative;
+	top:1px;
+}
+
+/* /////////////////////////////////// CSS PÁGINA3 /////////////////////////////////// */
+
+#p2{
+  width: auto;
+  margin: auto;
+}
+
+#tabeladiv{
+    display: block;
+    margin-left: 50px;
+    margin-right: 50px;
+    overflow-x:auto;
+    overflow-y: auto;
+    height: 300px;
+    align-content: center;
+    border-radius:12px;
+}
+
+
+
+
+.theader:hover {
+color:rgb(38, 104, 226);
+cursor: pointer;
+}
+
+.theader{
+  background-color: rgb(0, 179, 179);
+  width: fit-content;
+}
+
+#remover{
+  background-color: red;
+  width: 50px;
+}
+
+#graficodiv{
+  
+  height: 700px;
+  overflow-x:auto;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius:12px;
+}
+
+.btngrafico {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#4d4d4d;
+	font-family:Arial;
+	font-size:2vh;
+	font-weight:bold;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.btngrafico:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	background-color:#dfdfdf;
+}
+.btngrafico:active {
+	position:relative;
+	top:1px;
+}
+
+.btnexport{
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #45a361 5%, #45b481 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #569c2e;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:2vh;
+	
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #585858;
+}
+.btnexport:hover {
+	background:linear-gradient(to bottom, #45a361 5%, #80c7a6 100%);
+	background-color:#dfdfdf;
+}
+.btnexport:active {
+	position:relative;
+	top:1px;
+}
+
+.btnexport2{
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #45a361 5%, #45b481 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #569c2e;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	
+	padding:7px 255px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #585858;
+}
+.btnexport2:hover {
+	background:linear-gradient(to bottom, #45a361 5%, #80c7a6 100%);
+	background-color:#dfdfdf;
+}
+.btnexport2:active {
+	position:relative;
+	top:1px;
+}
+
+#grafico{
+  pointer-events: initial;
+}
+
+.btnvoltar {
+	box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+  	font-size:14px;
+	height: 30px;
+ 	width: 100px;
+  	float: left;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.btnvoltar:hover {
+	background-color:#b34332;
+}
+.btnvoltar:active {
+	position:relative;
+	top:1px;
+}
+
+#formexport{
+	background-color: rgba(30, 66, 100, 0.842);
+	border-radius: 10px;
+	margin: auto;
+	min-width: 300px;
+}
+
+.form-control{
+	border-radius: 6px;
+	max-width: 630px;
+	height: 35px;
+	margin: auto;
+}
+
+.alert{
+	display: none;
+	width: 200px;
+}
+
+#canvaslogo{
+	display: none;
+}
+
+#logopreto{
+	width: 240px;
+	display: none;
+}
+
+#graficoimg{
+	border-radius: 9px;
+}
+
+h6{
+	color: rgb(89, 200, 214);
+}
+
+#thumbs{
+	align-content: center;
+	
+}
+
+.pdfthumb{
+	width: 145px;
+	border-radius: 7px;
+	margin-left: 3em;
+	margin-right: 40px;
+	transition: 0.3s;
+	
+  }
+
+  .pdfthumb:hover{
+	opacity: 0.7;
+	cursor: pointer;
+	border: 3px #00ff88 solid;
+  }
+
+  .radio{
+	margin-top: 20px;
+	width: 233px;
+	cursor: pointer;
+	background-color: lawngreen;
+	margin-bottom: 35px;
+  }
+
+
+
+  .modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (Image) */
+  .modal-content {
+	margin: auto;
+	display: block;
+	width: 30%;
+	border-radius: 8px;
+	max-width: 700px;
+  }
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: rgb(255, 255, 255);
+	padding: 10px 0;
+	height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+	animation-name: zoom;
+	animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+	from {transform:scale(0)}
+	to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+	position: absolute;
+	top: 35px;
+	right: 300px;
+	color: #ff0000;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+	color: rgba(255, 0, 0, 0.479);
+	text-decoration: none;
+	cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+	.modal-content {
+	  width: 100%;
+	}
+  }
+
+  #grafico{
+	  cursor: pointer;
+  }
+
+  #ficheiro{
+	max-width: 630px;
+	height: 50px;
+	padding-top: 10px;
+	  background-color: rgba(0, 255, 21, 0.452);
+	  border-radius: 10px;
+	  margin: auto;
+  }
+
+  #ficheiro1{
+	border: 1.5px dashed rgb(255, 255, 255);
+	border-radius: 7px;
+	color: rgb(255, 217, 0);
+	cursor: pointer;
+	transition: 0.3s;
+  }
+
+  #ficheiro1:hover{
+	border: 1.5px solid rgb(0, 255, 34);
+	transition: 0.6s;
+	opacity: 0.8;
+	
+  }
+  
+  #b64{
+	display: none;
+  }
+
+  #canvaspessoal{
+	display: none;
+}
+
+#botoes{
+	width: 100%;
+}
+
+#radios{
+	width: 100%;
+	min-width: 90%;
+}
+
+  

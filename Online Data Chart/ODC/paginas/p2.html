@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+  <html lang="en-US">
+    
+  <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" href="../css/style2.css">
+      <script src="Controllers.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localize/0.1.0/jquery.localize.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localize/0.1.0/jquery.localize.min.js"></script> 
+  </head>
+
+<title> Online Data Chart </title>
+
+  <body>
+
+    <img id="logobranco2" src="../imagens/logo_ODC1.png">
+
+      <div id="bandeiras">
+        <img class="bandeira" src="https://www.countryflags.io/pt/shiny/64.png" onclick="pt()">
+        <img class="bandeira" src="https://www.countryflags.io/gb/shiny/64.png" onclick="ingles()">
+        <img class="bandeira" src="https://www.countryflags.io/es/shiny/64.png" onclick="espanhol()">
+      </div>
+
+    <div id="passo1" ng-app="ODC" ng-controller="controller2">
+
+    <!-- /////////////////////////// PÁGINA 2 /////////////////////////// -->
+
+      <div id="p2" ng-show="p2"> 
+        <h4 data-localize="passo1"></h4>
+          <p data-localize="p1"></p>
+          <p data-localize="p2"></p>
+          <p data-localize="p3"></p> 
+          <p data-localize="p4"></p> 
+        <div class="container">   
+            <input type="file" id="file" onchange="processSelectedFiles(this)" accept=".csv"/> 
+        </div>
+      
+              </br>
+        <button data-localize="btncontinuar" id="button" value="start" ng-click="submit()" class="btncontinuar"></button></br>
+       
+      </div>
+    
+    <!-- /////////////////////////// PÁGINA 3 /////////////////////////// -->
+
+      <div id="p3" ng-show="p3">
+        <button data-localize="voltar" id="voltarimport" ng-click="voltarimport()" value="adeus" class="btnvoltar"><i class="fa fa-arrow-circle-o-left"></i></button></br></br>
+        <h4 data-localize="passo2"></h4> 
+        <p data-localize="analisar"></p></br></br>
+
+         
+          <h6 data-localize="ficheiro"></h6><a id="filename"></a>
+          <div id="tabeladiv">
+          <table class="table table-sm table-dark table-bordered" id="tabela">
+            <thead>
+              <tr>
+                <th data-localize="remover" id="remover"></th>
+                <th class="theader" ng-repeat="header in headers track by $index">{{header}}</th>
+              </tr>
+            </thead>  
+            <tbody>
+              <tr ng-repeat="row in rows">
+                <td class="remover"><input type="button" class="button btn-danger" value="X" onclick="deleteRow(this)"></td>
+                <td class="tbody" ng-repeat="data in row track by $index">{{data}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> </br>
+           <button data-localize="btncontinuar2" id="button1"  value="adeus" ng-click="pagina4()" class="btncontinuar"></button></br>
+           
+    
+      </div>
+      
+      
+      <!-- /////////////////////////// PÁGINA 4 /////////////////////////// -->
+
+      <div id="p4" ng-show="p4">
+        <button data-localize="voltar" id="voltartabela" ng-click="voltartabela()" value="adeus" class="btnvoltar"><i class="	fa fa-arrow-circle-o-left"></i></button></br></br>
+        <h4 data-localize="passo3"></h4> 
+        <p data-localize="escolhergraf"></p>
+        
+ 
+        <input type="hidden" id="col1" value="{{col1}}" />
+        <input type="hidden" id="col2" value="{{col2}}" />
+        <input type="hidden" id="header1" value="{{header1}}" />
+        <input type="hidden" id="header2" value="{{header2}}" />
+
+        
+      <div id="botoes">
+        <button data-localize="barras" id="barras"  value="grafico" onclick="chartbarras()" class="btngrafico"><i class="fa fa-bar-chart"></i></button>
+        <button data-localize="pizza" id="pizza"  value="grafico" onclick="chartpizza()" class="btngrafico"><i class="fa fa-pie-chart"></i></button>
+        <button data-localize="linha" id="linha"  value="grafico" onclick="chartlinha()" class="btngrafico"><i class="fa fa-line-chart"></i></button>
+        <button data-localize="export" id="btnexport"  value="grafico" ng-click="export()" class="btnexport"><i class="fa fa-file-pdf-o"></i></button></br>
+        <a data-localize="x" id="info"><a>{{header1}}</a></a>
+        <a data-localize="y" id="info2"><a>{{header2}}</a></a>
+        <a data-localize="nficheiro"></a> <a id="nome"></a></a>
+      </div>
+        
+          <canvas id="grafico" style="background-color: rgba(255, 255, 255, 0.959); border-radius: 10px;"  height="100" ></canvas>
+      
+
+      </div>
+
+      <!-- /////////////////////////// PÁGINA EXPORT /////////////////////////// -->
+
+      <div id="export" ng-show="p5">
+        <button data-localize="voltar" id="voltargraf" ng-click="voltargrafico()" value="adeus" class="btnvoltar"><i class="fa fa-arrow-circle-o-left"></i></button></br></br>
+        <h4 data-localize="pdf"></h4> 
+        <p data-localize="forminfo"></p>
+        <canvas id="canvaslogo" width="1200" height="700" ></canvas>
+        <canvas id="canvaspessoal" width="600" height="200"></canvas>
+        
+          
+      <div id="formexport">  
+        <form id="loginform" class="form-horizontal" role="form">   
+          <div class="form-group"></br>
+            <label for="titulo"><h6 data-localize="titulo"></h6></label>
+            <input type="text" id="titulo" class="form-control" placeholder="insira o título que pretende atribuir ao gráfico..." required>
+              </div>
+          <div class="form-group">
+            <label for="estab"><h6 data-localize="estabelecimento"></h6></label>
+            <input type="text" id="estab" class="form-control" placeholder="insira o nome da sua empresa/organização...">
+          </div>
+  
+          <div class="form-group">
+            <label for="notas"><h6 data-localize="notas"></h6></label>
+            <textarea class="form-control" id="notas" rows="2"></textarea>
+          </div>
+
+          <div class="filepessoal">
+            <label for="logopessoal"><h6 data-localize="logotipo"></h6></label></br>
+              <div id="ficheiro">
+                <label for="myfile" data-localize="file"></label>
+                <input type="file" id="ficheiro1" class="ficheiro1" accept="image/*">
+              </div>
+          </div></br>
+
+          <textarea class="form-control" id="b64" rows="2"></textarea>
+
+          <img id="graficoimg" class="img-thumbnail" width="630" height="236"/><br><br>
+        </form> 
+        
+      <div id="thumbs">
+        
+        <div id="myModal" class="modal">
+          <!-- The Close Button -->
+          <span class="close">&times;</span>
+          <!-- Modal Content (The Image) -->
+          <img class="modal-content" id="img01">
+          <!-- Modal Caption (Image Text) -->
+          <div id="caption"></div> 
+        </div>
+        
+
+        <h6 data-localize="estilopdf"></h6></br>
+            <img id="style1" alt="Estilo 1" class="pdfthumb" src="../imagens/pfd1.jpg">           
+            <img id="style2" alt="Estilo 2" class="pdfthumb" src="../imagens/pdf2.jpg">
+            <img id="style3" alt="Estilo 3" class="pdfthumb" src="../imagens/pdf3.jpg">
+      </div>
+      <div id="radios">
+        <input class="radio" type="radio" id="pdf1" checked="checked" name="pdf" value="1">
+        <input class="radio" type="radio" id="pdf2" name="pdf" value="2">
+        <input class="radio" type="radio" id="pdf3" name="pdf" value="3">
+      </div>
+            
+            <button data-localize="btnexport" id="btnexport2" type="submit"  value="export" onclick="exportPDF()" class="btnexport2"><i class="fa fa-file-pdf-o"></i></button><br><br>
+            <img id="logopreto" src="../imagens/logo_ODC.png">
+         
+           
+
+          
+          
+      </div>
+
+        
+      </div>
+    
+
+      
+
+
+    </div>
+
+
+
+    <script>
+
+/////////////////////////// IDIOMAS /////////////////////////// 
+
+var linguagem = sessionStorage.getItem("idioma");
+
+if (linguagem == null){
+  $('[data-localize]').localize("translation", {language: "pt"});
+  sessionStorage.setItem("idioma", "pt");
+} else {
+$('[data-localize]').localize("translation", {language: linguagem});
+}
+
+var idioma;
+function pt(){
+  $('[data-localize]').localize("translation", {language: "pt"});
+  idioma = "pt";
+  sessionStorage.setItem("idioma", idioma);
+}
+
+function ingles(){
+  $('[data-localize]').localize("translation", {language: "en"});
+  idioma = "en";
+  sessionStorage.setItem("idioma", idioma);
+}
+
+function espanhol(){
+  $('[data-localize]').localize("translation", {language: "es"});
+  idioma = "es";
+  sessionStorage.setItem("idioma", idioma);
+}
+
+/////////////////////////// NOME DO FICHEIRO /////////////////////////// 
+
+function processSelectedFiles(fileInput) {
+  var files = fileInput.files;
+
+  for (var i = 0; i < files.length; i++) {
+    var name = files[i].name;
+    document.getElementById("filename").innerHTML = name;
+    document.getElementById("nome").innerHTML = name;
+  }
+}
+
+/////////////////////////// DATA ATUAL /////////////////////////// 
+
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  var data = dd + '/' + mm + '/' + yyyy;
+
+/////////////////////////// LOGO PDF /////////////////////////// 
+
+window.onload = function() {
+  var c = document.getElementById("canvaslogo");
+  var ctx = c.getContext("2d");
+  var img = document.getElementById("logopreto");
+  ctx.drawImage(img, 0, 0);
+};
+
+ /////////////////////////// LOGO DO UTILIZADOR /////////////////////////// 
+
+
+  let fileInput = document.getElementById('ficheiro1');
+fileInput.addEventListener('change', function(ev) {
+   if(ev.target.files) {
+      let file = ev.target.files[0];
+      var reader  = new FileReader();
+       reader.readAsDataURL(file);
+        reader.onloadend = function (e) {
+          var image = new Image();
+          image.src = e.target.result;
+          image.onload = function(ev) {
+             var canvas = document.getElementById('canvaspessoal');
+             canvas.width = image.width;
+             canvas.height = image.height;
+             var ctx = canvas.getContext('2d');
+             ctx.drawImage(image,200,10, 460, 45);
+         }
+      }
+   }
+});
+
+
+
+/////////////////////////// EXPORT PDF /////////////////////////// 
+
+function exportPDF(){
+
+    var doc = new jsPDF();
+    var doch = new jsPDF('landscape');
+    var pdf1 = document.getElementById("pdf1");
+    var pdf2 = document.getElementById("pdf2");
+
+    var canvas = document.getElementById('grafico');
+    var dataURLgrafico = canvas.toDataURL();
+
+    var canvas2 = document.getElementById('canvaslogo');
+    var dataURLlogo = canvas2.toDataURL();
+
+    var canvaspessoal= document.getElementById('canvaspessoal');
+    var dataURLpessoal = canvaspessoal.toDataURL();
+
+    
+    if (document.getElementById("ficheiro1").value == ""){
+        var logo = dataURLlogo;
+    } else {
+       var logo = dataURLpessoal;
+    }
+
+    
+
+
+    if(document.getElementById("titulo").value == ""){
+        alert("Insira um título para o gráfico!");
+    }
+
+    else if (pdf1.checked) {
+
+
+        doc.addImage(logo, 'JPEG', 60, 10, 100, 55);
+        doc.setLineWidth(0.1)
+        doc.line(10, 25, 200, 25)
+        doc.setFontSize(12)
+        doc.setTextColor(255, 0, 0)
+        doc.setFont('helvetica')
+        doc.text(20, 50, 'Título:')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("titulo").value, 35, 50);
+      
+
+        doc.setFontSize(12)
+        doc.setTextColor(255, 0, 0)
+        doc.setFont('helvetica')
+        doc.text(20, 65, 'Estabelecimento:')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("estab").value, 55, 65);
+
+        doc.setFontSize(12)
+        doc.setTextColor(255, 0, 0)
+        doc.setFont('helvetica')
+        doc.text(20, 80, 'Eixos:')
+        doc.setFontSize(12)
+        doc.setTextColor(100)
+        doc.setFont('helvetica')
+        doc.text(35, 80, 'X:')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("header1").value, 40, 80);
+        doc.setFontSize(12)
+        doc.setTextColor(100)
+        doc.setFont('helvetica')
+        doc.text(35, 90, 'Y:')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("header2").value, 40, 90);
+
+
+        doc.setDrawColor(255, 0, 0)
+        doc.rect(5, 130, 200, 93)
+
+        doc.setFontSize(14)
+        doc.setTextColor(255, 0, 0)
+        doc.setFont('helvetica')
+        doc.text(97, 120, 'Gráfico')
+        doc.addImage(dataURLgrafico, 'JPEG',8, 140, 195, 75);
+
+        doc.setFontSize(12)
+        doc.setTextColor(255, 0, 0)
+        doc.setFont('helvetica')
+        doc.text(20, 235, 'Notas:')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("notas").value, 35, 235);
+
+        doc.setDrawColor(50)
+        doc.setLineWidth(0.1)
+        doc.line(10, 275, 200, 275)
+        doc.setTextColor(100)
+        doc.setFontSize(10)
+        doc.text(65, 285, 'Online Data Chart')
+        doc.setTextColor(100)
+        doc.text(data, 115, 285);
+        
+
+
+        doc.save('odc_report.pdf');
+
+    }
+
+    else if(pdf2.checked){
+
+      doc.addImage(logo, 'JPEG', 15, 15, 70, 40);
+        doc.setFontSize(15)
+        doc.setTextColor(100)
+        doc.text(data, 165, 24);
+        doc.setLineWidth(0.1)
+        doc.line(10, 25, 200, 25)
+        doc.setFontSize(12)
+        doc.setTextColor(0, 0, 160)
+        doc.setFont('helvetica')
+        doc.text(20, 50, 'TÍTULO')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("titulo").value, 20, 55);
+        
+
+        doc.setFontSize(12)
+        doc.setTextColor(0, 0, 160)
+        doc.setFont('helvetica')
+        doc.text(115, 50, 'ESTABELECIMENTO')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("estab").value, 110, 55);
+
+        doc.setFontSize(12)
+        doc.setTextColor(0, 0, 160)
+        doc.setFont('helvetica')
+        doc.text(20, 70, 'NOTAS')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("notas").value, 20, 75);
+
+
+        doc.setFontSize(12)
+        doc.setTextColor(0, 0, 160)
+        doc.setFont('helvetica')
+        doc.text(20, 95, 'EIXOS:')
+        doc.setFontSize(12)
+        doc.setTextColor(100)
+        doc.setFont('helvetica')
+        doc.text(20, 105, 'X:')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("header1").value, 25, 105);
+        doc.setFontSize(12)
+        doc.setTextColor(100)
+        doc.setFont('helvetica')
+        doc.text(20, 115, 'Y:')
+        doc.setFontSize(12)
+        doc.setTextColor(50)
+        doc.text(document.getElementById("header2").value, 25, 115);
+
+
+      
+
+        doc.setFontSize(14)
+        doc.setTextColor(0, 0, 160)
+        doc.setFont('helvetica')
+        doc.text(20, 145, 'GRÁFICO')
+        doc.addImage(dataURLgrafico, 'JPEG',12, 155, 185, 70);
+
+      
+
+        doc.setDrawColor(50)
+        doc.setLineWidth(0.1)
+        doc.line(10, 290, 200, 290)
+        doc.setTextColor(100)
+        doc.setFontSize(10)
+        doc.setFontType('italic')
+        doc.text(90, 295, 'Online Data Chart')
+        
+        
+        
+
+
+        doc.save('odc_report.pdf');
+
+
+    }
+
+    else{
+    
+        doch.addImage(logo, 'JPEG', 120, 6, 70, 40);
+        doch.setLineWidth(0.1)
+        doch.line(10, 20, 285, 20)
+        doch.setFontSize(12)
+        doch.setTextColor(0, 240, 0)
+        doch.setFont('helvetica')
+        doch.text(20, 30, 'Título:')
+        doch.setFontSize(12)
+        doch.setTextColor(50)
+        doch.text(document.getElementById("titulo").value, 35, 30);
+        
+
+        doch.setFontSize(12)
+        doch.setTextColor(0, 240, 0)
+        doch.setFont('helvetica')
+        doch.text(145, 30, 'Estabelecimento:')
+        doch.setFontSize(12)
+        doch.setTextColor(50)
+        doch.text(document.getElementById("estab").value, 180, 30);
+
+        doch.setFontSize(12)
+        doch.setTextColor(0, 240, 0)
+        doch.setFont('helvetica')
+        doch.text(20, 40, 'Notas:')
+        doch.setFontSize(12)
+        doch.setTextColor(50)
+        doch.text(document.getElementById("notas").value, 35, 40);
+
+
+        doch.setFontSize(12)
+        doch.setTextColor(0, 240, 0)
+        doch.setFont('helvetica')
+        doch.text(20, 70, 'Eixos:')
+        doch.setFontSize(12)
+        doch.setTextColor(100)
+        doch.setFont('helvetica')
+        doch.text(35, 70, 'X:')
+        doch.setFontSize(12)
+        doch.setTextColor(50)
+        doch.text(document.getElementById("header1").value, 40, 70);
+        doch.setFontSize(12)
+        doch.setTextColor(100)
+        doch.setFont('helvetica')
+        doch.text(65, 70, 'Y:')
+        doch.setFontSize(12)
+        doch.setTextColor(50)
+        doch.text(document.getElementById("header2").value, 70, 70);
+
+
+      
+
+      
+        doch.addImage(dataURLgrafico, 'JPEG',20, 90, 250, 90);
+
+
+        doch.setLineWidth(0.1)
+        doch.line(10, 200, 285, 200)
+
+        doch.setDrawColor(50)
+        doch.setLineWidth(0.1)
+        doch.line(10, 290, 200, 290)
+        doch.setTextColor(100)
+        doch.setFontSize(10)
+        doch.text(120, 205, 'Online Data Chart')
+        doch.setTextColor(100)
+        doch.text(data, 155, 205);
+        
+        
+        
+
+
+        doch.save('odc_report.pdf');
+
+
+      }
+
+}
+
+/////////////////////////// MODAL PDF TEMPLATE /////////////////////////// 
+
+var modal = document.getElementById("myModal");   
+
+var img1 = document.getElementById("style1");
+var img2 = document.getElementById("style2");
+var img3 = document.getElementById("style3");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img1.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+img2.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+img3.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+
+/////////////////////////// CORES DOS GRÁFICOS /////////////////////////// 
+
+var palette = [
+  'rgba(255, 99, 132, 0.9)',
+  'rgba(54, 162, 235, 0.6)',
+  'rgba(255, 206, 86, 0.6)',
+  'rgba(75, 192, 192, 0.6)',
+  'rgba(153, 102, 255, 0.6)',
+  'rgba(255, 159, 64, 0.6)',
+  'rgba(0, 255, 247, 0.6)',
+  'rgba(255, 119, 0, 0.6)',
+  'rgba(0, 255, 102, 0.6)',
+  'rgba(255, 0, 0, 0.6)',
+  'rgba(255, 78, 0, 0.6)',
+  'rgba(255, 0, 80, 0.6)',
+  'rgba(255, 29, 32, 0.6)',
+  'rgba(255, 100, 0, 0.6)'
+]
+
+
+ /////////////////////////// LEGENDA ATIVA /////////////////////////// 
+
+//  Chart.pluginService.register({
+//   beforeRender: function (chart) {
+//     if (chart.config.options.showAllTooltips) {
+//         // create an array of tooltips
+//         // we can't use the chart tooltip because there is only one tooltip per chart
+//         chart.pluginTooltips = [];
+//         chart.config.data.datasets.forEach(function (dataset, i) {
+//             chart.getDatasetMeta(i).data.forEach(function (sector, j) {
+//                 chart.pluginTooltips.push(new Chart.Tooltip({
+//                     _chart: chart.chart,
+//                     _chartInstance: chart,
+//                     _data: chart.data,
+//                     _options: chart.options.tooltips,
+//                     _active: [sector]
+//                 }, chart));
+//             });
+//         });
+
+//         // turn off normal tooltips
+//         chart.options.tooltips.enabled = false;
+//     }
+// },
+//   afterDraw: function (chart, easing) {
+//     if (chart.config.options.showAllTooltips) {
+//         // we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
+//         if (!chart.allTooltipsOnce) {
+//             if (easing !== 1)
+//                 return;
+//             chart.allTooltipsOnce = true;
+//         }
+
+//         // turn on tooltips
+//         chart.options.tooltips.enabled = true;
+//         Chart.helpers.each(chart.pluginTooltips, function (tooltip) {
+//             tooltip.initialize();
+//             tooltip.update();
+//             // we don't actually need this since we are not animating tooltips
+//             tooltip.pivot();
+//             tooltip.transition(easing).draw();
+//         });
+//         chart.options.tooltips.enabled = false;
+//     }
+//   }
+// });
+
+ /////////////////////////// GRÁFICOS VAR ///////////////////////////
+
+ var ctx = document.getElementById('grafico');
+
+ var myChart1 = new Chart(ctx, null); 
+ var myChart2 = new Chart(ctx, null); 
+ var myChart3 = new Chart(ctx, null); 
+
+
+ /////////////////////////// GRÁFICO BARRAS /////////////////////////// 
+
+ function chartbarras(){
+ 
+ var col1 = JSON.parse($('#col1').val());
+ var col2 = JSON.parse($("#col2").val());
+ var header2 = $("#header2").val();
+
+ 
+ myChart2.destroy();
+ myChart3.destroy();
+ myChart1 = new Chart(ctx, {
+     type: 'bar',
+     data: {
+         labels: col1,
+         datasets: [{
+             label: header2,
+             data: col2,
+             backgroundColor: function(context) {
+               return palette[context.dataIndex % palette.length];
+             },
+       
+       borderColor: 'rgba(0, 5, 102, 0.6)',
+           
+       borderWidth: 1,
+         }]
+     },
+     options: {
+      // showAllTooltips: true,
+      animation: {
+                onComplete: function(animation){
+                    document.querySelector('#grafico').setAttribute('href', this.toBase64Image());
+                    document.querySelector('#graficoimg').setAttribute('src', this.toBase64Image());
+                }
+            }
+       
+
+}
+ });
+}
+
+ /////////////////////////// GRÁFICO PIZZA /////////////////////////// 
+
+ function chartpizza(){
+
+
+ 
+      // var data = [];
+      // data = $("#header").val();
+      var col1 = JSON.parse($('#col1').val());
+      var col2 = JSON.parse($("#col2").val());
+
+      // var body = $("#body").val();
+      myChart1.destroy();
+      myChart3.destroy();
+      myChart2 = new Chart(ctx, {
+          type: 'pie',
+          data: {
+              labels: col1,
+              datasets: [{
+                  data: col2,
+                  borderWidth: 2,
+                  lineTension: 0,
+                  showTooltips: false,
+                  borderColor: 'rgba(0, 5, 102, 0.6)',
+                  backgroundColor: function(context) {
+    return palette[context.dataIndex % palette.length];
+  }
+              }]
+          },
+          options: {
+            // showAllTooltips: true,
+            animation: {
+                onComplete: function(animation){
+                    document.querySelector('#grafico').setAttribute('href', this.toBase64Image());
+                    document.querySelector('#graficoimg').setAttribute('src', this.toBase64Image());
+                }
+            }
+            
+  }
+      });
+    }
+
+
+
+  /////////////////////////// GRÁFICO DE LINHA /////////////////////////// 
+ 
+  function chartlinha(){
+ 
+      
+    var col1 = JSON.parse($('#col1').val());
+    var col2 = JSON.parse($("#col2").val());
+    var header2 = $("#header2").val();
+
+    // var body = $("#body").val();
+    myChart1.destroy();
+    myChart2.destroy();    
+    myChart3 = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: col1,
+            datasets: [{
+                label: header2,
+                data: col2,
+                borderWidth: 2,
+                lineTension: 0,
+                borderColor: 'rgba(239, 0, 0, 0.9)',
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                animation: 0
+                
+            }]
+        },
+        options: {
+          // showAllTooltips: true,
+          animation: {
+                    onComplete: function(animation){
+                        document.querySelector('#grafico').setAttribute('href', this.toBase64Image());
+                        document.querySelector('#graficoimg').setAttribute('src', this.toBase64Image());
+                    }
+                } 
+        }
+    });
+}
+ 
+
+
+      </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+body{
+  color: white;
+  background-image: url('../imagens/1.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ /* button.link { background:none;border:none; } */
+
+#logobranco1{
+  padding-top: 60px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 450px;
+}
+
+
+#inicio{
+  padding-top: 90px;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bemvindo{
+  color: white;
+  padding-top: 20px;
+  font-size: 4vh;
+}
+
+.intro{
+  font-size: 2vh;
+  text-align: center;
+  color: #fff;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#comofunciona{
+  font-size: 15px;
+}
+
+
+
+.myButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff !important;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 90px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.myButton2 {
+  box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border:1px solid #a73f2d;
+  border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:2px 80px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.myButton2:hover {
+	background-color:#b34332;
+}
+.myButton2:active {
+  position:relative;
+	top:1px;
+}
+
+#myDIV{
+	display: none;
+	width: 530px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 35px;
+}
+
+.modal-confirm {		
+	color: #636363;
+	width: 325px;
+  }
+  .modal-confirm .modal-content {
+	padding-top: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: left;
+  }
+  .modal-confirm .modal-header {
+	border-bottom: none;   
+		position: relative;
+  }
+  .modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -15px;
+  }
+  .modal-confirm .form-control, .modal-confirm .btn {
+	min-height: 40px;
+	border-radius: 3px; 
+  }
+  .modal-confirm .close {
+    position: absolute;
+	top: -5px;
+	right: -5px;
+  }	
+  .modal-confirm .modal-footer {
+	border: none;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 13px;
+  }	
+  .modal-confirm .icon-box {
+	color: #fff;		
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: -70px;
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	z-index: 9;
+	background: #006eff;
+	padding: 15px;
+	text-align: center;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  .modal-confirm .icon-box i {
+	font-size: 58px;
+	position: relative;
+	top: 3px;
+  }
+  .modal-confirm.modal-dialog {
+	margin-top: 80px;
+  }
+	.modal-confirm .btn {
+		color: #fff;
+		border-radius: 4px;
+	background: #006eff;
+	text-decoration: none;
+	transition: all 0.4s;
+		line-height: normal;
+		border: none;
+	}
+  .modal-confirm .btn:hover, .modal-confirm .btn:focus {
+	background: #006effa4;
+	outline: none;
+  }
+  .trigger-btn {
+	display: inline-block;
+	margin: 5px auto;
+	font-size: 15px;
+	color:yellow;
+  }
+
+  #myModal{
+	  padding-top: 150px;
+  }
+
+  .bandeira{
+	width: 45px;
+	border-radius: 10px;
+	transition: 0.3s;
+  }
+
+  .bandeira:hover{
+	opacity: 0.7;
+	cursor: pointer;
+  }

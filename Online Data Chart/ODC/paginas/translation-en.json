@@ -1,0 +1,47 @@
+{
+    "bemvindo": "Welcome to Online Data Chart",
+    "intro": "A free platform where you can convert your data files into charts for more intuitive analysis",
+    "intro2": "Start analyzing your data with us now!",
+    "btncomecar": "START",
+    "btnhow": "How it works?",
+
+    "passo1": "Step 1: Your file",
+    "p1":"Choose the file you want to import",
+    "p2":"-CSV format",
+    "p3":"-The first line of the file must contain the header with the name of each column",
+    "p4":"-It must consist of 2 columns: column 1 with the attributes and column 2 with the respective values",
+    "btncontinuar":"NEXT",
+
+    "modal1":"How to use our platform?",
+    "modal2":"1- Import a .csv file",
+    "modal3":"2- Analyze the content and remove data if desired",
+    "modal4":"3- Your chart is ready and can be exported to PDF!",
+
+    "passo2": "Step 2: Your data",
+    "analisar":"Review the following table containing the data provided and remove, if necessary, rows of information that you do not want to include in the graph.",
+    "ficheiro":"file name:",
+    "remover":"Remove",
+    "btncontinuar2":"Confirm data and proceed",
+
+    "passo3": "Step 3: Your chart",
+    "voltar": "Return",
+    "escolhergraf":"Choose the chart type you want to make!",
+    "x": "X axis: ",
+    "y": "Y axis: ",
+    "nficheiro": "File: ",
+    "barras":"Bar Chart",
+    "pizza":"Pie Chart",
+    "linha":"Line Chart",
+    "export":"Export PDF",
+
+    "pdf": "Export to PDF",
+    "forminfo":"You can export your chart to a PDF document with additional information about it!",
+    "titulo": "Chart title",
+    "estabelecimento": "Establishment name (optional)",
+    "notas": "Additional notes (optional)",
+    "logotipo":"Logo of your establishment (optional)",
+    "file":"Choose an image on your device:",
+    "estilopdf":"PDF style",
+    "btnexport":"Export PDF"
+
+}

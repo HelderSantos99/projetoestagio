@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localize/0.1.0/jquery.localize.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localize/0.1.0/jquery.localize.min.js"></script>
+
+<script src="Controllers.js"></script>
+</head>
+<title> Online Data Chart </title>
+<body ng-app="ODC" ng-controller="controller1">
+
+  <img id="logobranco1" src="../imagens/logo_ODC1.png">
+
+
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="icon-box">
+            <i class="material-icons">info</i>
+          </div>				
+          <h4 data-localize="modal1" class="modal-title"></h4>	
+        </div>
+        <div class="modal-body">
+          <p data-localize="modal2" class="text-center"></p>
+          <p data-localize="modal3" class="text-center"></p>
+          <p data-localize="modal4" class="text-center"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <!-- <div class="alert alert-info alert-dismissible" id="myDIV">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> Como utilizar a nossa plataforma em 3 passos: </br> 1- Importar um ficheiro .csv </br>2- Analisar o conteúdo e remover dados caso seja pretendido </br>3- O seu gráfico está pronto e pode ser exportado em PDF!
+  </div> -->
+  <div ng-view id="inicio">
+      <h1 data-localize="bemvindo" id="bemvindo"></h1>
+      <p data-localize="intro" class="intro"></br>
+      <p data-localize="intro2" class="intro"></p> </br></br>
+      <a data-localize="btncomecar" ng-click="clicked()" class="myButton"></a></br></br>
+ 
+        <!-- Button HTML (to Trigger Modal) -->
+        <button data-localize="btnhow" href="#myModal" class="myButton2" data-toggle="modal"></button></br>
+
+        <img class="bandeira" src="https://www.countryflags.io/pt/shiny/64.png" onclick="pt()">
+        <img class="bandeira" src="https://www.countryflags.io/gb/shiny/64.png" onclick="ingles()">
+        <img class="bandeira" src="https://www.countryflags.io/es/shiny/64.png" onclick="espanhol()">
+  </div></br>
+  
+
+<script>
+
+var linguagem = sessionStorage.getItem("idioma");
+
+if (linguagem == null){
+  $('[data-localize]').localize("translation", {language: "pt"});
+  sessionStorage.setItem("idioma", "pt");
+} else {
+  $('[data-localize]').localize("translation", {language: linguagem});
+}
+
+
+var idioma;
+function pt(){
+  $('[data-localize]').localize("translation", {language: "pt"});
+  idioma = "pt";
+  sessionStorage.setItem("idioma", idioma);
+}
+
+function ingles(){
+  $('[data-localize]').localize("translation", {language: "en"});
+  idioma = "en";
+  sessionStorage.setItem("idioma", idioma);
+}
+
+function espanhol(){
+  $('[data-localize]').localize("translation", {language: "es"});
+  idioma = "es";
+  sessionStorage.setItem("idioma", idioma);
+}
+
+</script>
+
+</body>
+</html>
